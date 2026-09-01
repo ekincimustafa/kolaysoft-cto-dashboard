@@ -4,8 +4,6 @@
 **Tarih:** 31 Ağustos 2026  
 **Geliştirici:** Mustafa Ekinci  
 **Geliştirme Yönü:** Full Stack  
-**Sorumlu Mühendis:** Muhammet Fatih Diker  
-**Analiz Mentoru:** Ayşenur Yaylacı  
 
 ---
 
@@ -51,7 +49,7 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 
 ---
 
-### 6. Kullanıcı Hikâyeleri (User Stories)
+### 6. Kullanıcı Hikâyeleri
 - **US-01 (Giriş):** Bir kullanıcı olarak, sisteme e-posta ve şifremle giriş yapmak istiyorum; böylece rolüme uygun ekranlara erişebilirim.
 - **US-02 (Proje Listesi):** Bir Proje Yöneticisi olarak, sorumlu olduğum projeleri listelemek istiyorum; böylece hangi projelere rapor gireceğimi seçebilirim.
 - **US-03 (Rapor Oluşturma):** Bir Proje Yöneticisi olarak, seçtiğim proje için ilgili haftanın ilerleme yüzdesini, yapılanlarını, yapılacaklarını ve risklerini girmek istiyorum; böylece haftalık durum paylaşımını tamamlayabilirim.
@@ -62,7 +60,7 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 ---
 
 ### 7. Ekran Listesi
-1. **Giriş Ekranı (Login):** E-posta ve şifre giriş formu, hata geri bildirimleri.
+1. **Giriş Ekranı :** E-posta ve şifre giriş formu, hata geri bildirimleri.
 2. **Proje Listesi Ekranı:** Proje kartları/tablosu ve yeni rapor ekleme butonları.
 3. **Haftalık Rapor Form Ekranı:** Rapor haftası, hedeflenen/gerçekleşen %, durum, takvim, risk, yapılanlar, yapılacaklar ve not giriş formları.
 4. **İş Kalemi Yönetim Ekranı / Bileşeni:** Görev ekleme, düzenleme ve durum (Planlandı, Devam Ediyor, Tamamlandı vb.) güncelleme alanı.
@@ -73,7 +71,7 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 
 ### 8. Veri Modeli ve API Taslağı
 
-#### Temel Veri Varlıkları (Entity Model)
+#### Temel Veri Varlıkları
 - **User:** `id`, `email`, `password_hash`, `first_name`, `last_name`, `role_id`, `created_at`
 - **Role:** `id`, `name` (ADMIN, PROJECT_MANAGER, CTO)
 - **Project:** `id`, `name`, `client_name`, `status`, `manager_id`, `created_at`
@@ -93,7 +91,7 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 
 ---
 
-### 9. İş Kuralları ve Doğrulamalar (Business Rules)
+### 9. İş Kuralları ve Doğrulamalar
 1. **Yüzde Doğrulaması:** Hedeflenen ve gerçekleşen ilerleme değerleri 0 ile 100 arasında bir tamsayı olmak zorundadır.
 2. **Proje Sahipliği:** Proje Yöneticisi yalnızca `manager_id` değeri kendi kullanıcı ID'si ile eşleşen projeler için rapor oluşturabilir veya güncelleyebilir.
 3. **Zorunlu Alanlar:** Rapor haftası, hedeflenen %, gerçekleşen %, durum, risk seviyesi ve en az bir "yapılanlar" açıklaması zorunludur.
@@ -109,7 +107,7 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 
 ---
 
-### 11. Kabul Kriterleri (Acceptance Criteria)
+### 11. Kabul Kriterleri
 - [ ] Bir Proje Yöneticisi sisteme giriş yaptığında yalnızca kendi sorumlu olduğu projeleri görebilmelidir.
 - [ ] Proje Yöneticisi haftalık rapor formunu eksiksiz doldurup kaydettiğinde, veritabanına ilişkili iş kalemleriyle birlikte kayıt atılmalıdır.
 - [ ] CTO rolündeki kullanıcı sisteme girdiğinde tüm projelerin son haftalık durumlarını ve risk renklerini dashboard'da görebilmelidir.
