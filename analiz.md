@@ -1,10 +1,10 @@
 # Haftalık Proje Durum Raporlama ve CTO Takip Sistemi
 ## Ön Analiz ve Gereksinim Dokümanı (v1.0)
 
-**Tarih:** 31 Ağustos 2026  
+**Tarih:** 1 Eylül 2026  
 **Geliştirici:** Mustafa Ekinci  
 **Geliştirme Yönü:** Full Stack  
-
+**Sorumlu Mühendis:** Muhammet Fatih Diker (Kapsam ve Kural Onayı alındı)
 ---
 
 ### 1. Proje Amacı
@@ -116,9 +116,9 @@ Aşağıdaki özellikler MVP fazında geliştirilmeyecek, sonraki aşamalara bı
 
 ---
 
-### 12. Açık Sorular ve Varsayımlar (Onay Bekleyen Maddeler)
-*Aşağıdaki maddeler MVP analizi için varsayılarak kurgulanmış olup, sorumlu mühendis onayına sunulmuştur:*
-1. **Proje Görünürlüğü:** MVP aşamasında Proje Yöneticilerinin yalnızca kendilerine atanan projeleri görebileceği varsayılmıştır. *(Diğer projelerin salt-okunur gösterimi talep edilirse filtreleme güncellenecektir.)*
-2. **İlerleme Hesabı:** İlerleme yüzdelerinin (% Hedeflenen / % Gerçekleşen) form üzerinden Proje Yöneticisi tarafından manuel girileceği varsayılmıştır.
-3. **Ekip Lideri Rolü:** MVP geliştirme hızını korumak adına "Ekip Lideri" rolü ilk 20 günde kapsam dışı bırakılmış, Admin / PY / CTO rolleri hedeflenmiştir.
-4. **Geçmiş Rapor Kilitlenmesi:** Geçmiş haftalara ait raporların geriye dönük veri tutarlılığı açısından düzenlemeye kapatılacağı varsayılmıştır.
+### 12. Kesinleşen Kapsam ve Mimari Kararları (Sorumlu Mühendis Onaylı)
+*Aşağıdaki kararlar Proje Sorumlusu Muhammet Fatih Diker ile teyit edilerek kesinleştirilmiştir:*
+1. **Proje Görünürlüğü:** Proje Yöneticileri yalnızca kendilerine atanan projeleri listeleyebilir ve yönetebilir. Portföy genelini yalnızca CTO rolü görür.
+2. **İlerleme Hesabı:** İlerleme yüzdeleri (% Hedeflenen / % Gerçekleşen) form üzerinden Proje Yöneticisi tarafından sayısal olarak girilir.
+3. **Rol Kapsamı:** MVP (ilk 20 gün) sürecinde odak kaybını önlemek adına "Ekip Lideri" rolü kapsam dışı bırakılmıştır. Sistem Admin, Proje Yöneticisi ve CTO rolleriyle geliştirilecektir.
+4. **Geçmiş Rapor Kilitlenmesi:** Geçmiş haftaların raporları geriye dönük veri tutarlılığı ve denetim güvenliği için düzenlemeye kapatılır, yalnızca görüntülenebilir.
