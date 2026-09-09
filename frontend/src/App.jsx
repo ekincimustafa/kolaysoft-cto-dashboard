@@ -1,44 +1,67 @@
 import { useEffect, useState } from 'react'
+import { getHealth } from './api/ctoDashboardApi'
+import ProjectsPage from './pages/ProjectsPage'
 import './App.css'
 
 function App() {
-  const [healthData, setHealthData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [apiStatus, setApiStatus] = useState('checking')
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/health')
-      .then((res) => {
-        if (!res.ok) throw new Error('Ağ yanıtı başarısız')
-        return res.json()
+    let isActive = true
+
+    getHealth()
+      .then((healthData) => {
+        if (isActive) {
+          setApiStatus(healthData.status === 'UP' ? 'online' : 'offline')
+        }
       })
-      .then((data) => {
-        setHealthData(data)
-        setLoading(false)
+      .catch(() => {
+        if (isActive) {
+          setApiStatus('offline')
+        }
       })
-      .catch((err) => {
-        setError(err.message)
-        setLoading(false)
-      })
+
+    return () => {
+      isActive = false
+    }
   }, [])
 
-  return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h1>Kolaysoft CTO Dashboard</h1>
-      <h2>İlk Çalışan İskelet (T04)</h2>
+  const apiStatusText = {
+    checking: 'API kontrol ediliyor',
+    online: 'Sistem çalışıyor',
+    offline: 'API bağlantısı yok',
+  }
 
-      <div style={{ marginTop: '2rem', padding: '1.5rem', border: '1px solid #444', borderRadius: '8px', display: 'inline-block' }}>
-        <h3>Backend Bağlantı Durumu</h3>
-        {loading && <p>Backend'e bağlanılıyor...</p>}
-        {error && <p style={{ color: 'red' }}>Hata: {error} (Backend çalışıyor mu?)</p>}
-        {healthData && (
-          <div style={{ color: 'lightgreen', textAlign: 'left' }}>
-            <p><strong>Durum:</strong> {healthData.status}</p>
-            <p><strong>Servis:</strong> {healthData.service}</p>
-            <p><strong>Sunucu Zamanı:</strong> {healthData.timestamp}</p>
+  return (
+    <div className="app-shell">
+      <header className="app-header">
+        <div className="brand">
+          <span className="brand-mark">K</span>
+
+          <div>
+            <p className="brand-name">Kolaysoft</p>
+            <p className="brand-product">CTO Dashboard</p>
           </div>
-        )}
-      </div>
+        </div>
+
+        <div className={`api-status api-status-${apiStatus}`}>
+          <span className="api-status-dot" />
+          {apiStatusText[apiStatus]}
+        </div>
+      </header>
+
+      <main className="app-content">
+        <section className="page-introduction">
+          <p className="page-eyebrow">Haftalık proje durum takibi</p>
+          <h1>Proje Portföyü</h1>
+          <p>
+            Projelerin güncel durumunu, müşterisini ve sorumlu proje
+            yöneticisini tek ekrandan görüntüleyin.
+          </p>
+        </section>
+
+        <ProjectsPage />
+      </main>
     </div>
   )
 }
